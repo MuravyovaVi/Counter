@@ -9,21 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var countUILabel: UILabel!
+    @IBOutlet private weak var countUILabel: UILabel!
     
    
-    @IBOutlet weak var plusUIButton: UIButton!
+    @IBOutlet private weak var plusUIButton: UIButton!
     
     
-    @IBOutlet weak var minusUIButton: UIButton!
+    @IBOutlet private weak var minusUIButton: UIButton!
     
     
-    @IBOutlet weak var refreshUIButton: UIButton!
+    @IBOutlet private weak var refreshUIButton: UIButton!
     
     
-    @IBOutlet weak var historyUITextView: UITextView!
+    @IBOutlet private weak var historyUITextView: UITextView!
     
-    
+    private var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,6 @@ class ViewController: UIViewController {
         addToHistory("История изменений:")
         updateCount()
     }
-
-    private var count = 0
     
     private func updateCount() {
         countUILabel.text = "Значение счетчика: \(count)"
@@ -44,14 +42,14 @@ class ViewController: UIViewController {
         historyUITextView.text.append("\(text)\n")
     }
    
-    @IBAction func plusButtonTapped(_ sender: UIButton) {
+    @IBAction private func plusButtonTapped(_ sender: UIButton) {
         
         count += 1
         updateCount()
         addToHistory("\(Date()): значение изменено на +1")
     }
     
-    @IBAction func minusButtonTapped(_ sender: UIButton) {
+    @IBAction private func minusButtonTapped(_ sender: UIButton) {
         if count > 0 {
             count -= 1
             updateCount()
@@ -62,7 +60,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+    @IBAction private func refreshButtonTapped(_ sender: UIButton) {
         count = 0
         updateCount()
         addToHistory("\(Date()): значение сброшено")
